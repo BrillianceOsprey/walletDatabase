@@ -7,25 +7,22 @@ class Income {
   String? itemName;
   bool? check;
   int? itemId;
-  Income({
-    this.itemIcon,
-    this.itemName,
-    this.check,
-    this.itemId,
-  });
+  String? remark;
+  Income({this.itemIcon, this.itemName, this.check, this.itemId, this.remark});
 
   Income copyWith({
     Icon? itemIcon,
     String? itemName,
     bool? check,
     int? itemId,
+    String? remark,
   }) {
     return Income(
-      itemIcon: itemIcon ?? this.itemIcon,
-      itemName: itemName ?? this.itemName,
-      check: check ?? this.check,
-      itemId: itemId ?? this.itemId,
-    );
+        itemIcon: itemIcon ?? this.itemIcon,
+        itemName: itemName ?? this.itemName,
+        check: check ?? this.check,
+        itemId: itemId ?? this.itemId,
+        remark: remark ?? this.remark);
   }
 
   Map<String, dynamic> toMap() {
@@ -34,15 +31,16 @@ class Income {
       'itemName': itemName,
       'check': check,
       'itemId': itemId,
+      'remark': remark,
     };
   }
 
   factory Income.fromMap(Map<String, dynamic> map) {
     return Income(
-      itemName: map['itemName'],
-      check: map['check'],
-      itemId: map['itemId']?.toInt(),
-    );
+        itemName: map['itemName'],
+        check: map['check'],
+        itemId: map['itemId']?.toInt(),
+        remark: map['remark']);
   }
 
   String toJson() => json.encode(toMap());
@@ -51,7 +49,7 @@ class Income {
 
   @override
   String toString() {
-    return 'Income(itemIcon: $itemIcon, itemName: $itemName, check: $check, itemId: $itemId)';
+    return 'Income(itemIcon: $itemIcon, itemName: $itemName, check: $check, itemId: $itemId, remark: $remark)';
   }
 
   @override
@@ -62,7 +60,8 @@ class Income {
         other.itemIcon == itemIcon &&
         other.itemName == itemName &&
         other.check == check &&
-        other.itemId == itemId;
+        other.itemId == itemId &&
+        other.remark == remark;
   }
 
   @override
@@ -70,6 +69,7 @@ class Income {
     return itemIcon.hashCode ^
         itemName.hashCode ^
         check.hashCode ^
-        itemId.hashCode;
+        itemId.hashCode ^
+        remark.hashCode;
   }
 }

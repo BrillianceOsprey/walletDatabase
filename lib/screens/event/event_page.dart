@@ -1,5 +1,4 @@
 import 'package:assist_queen/components/evt_item.dart';
-import 'package:assist_queen/components/note_card_widget.dart';
 import 'package:assist_queen/constant/note_theme.dart';
 import 'package:assist_queen/components/edit_note_page.dart';
 import 'package:assist_queen/database_helper/database.dart';
@@ -78,15 +77,13 @@ class _EventPageState extends State<EventPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(
-                child: Text(
-                  'Today has no tasks',
-                  style: TextStyle(
-                      fontFamily: 'RobotoMono',
-                      color: NoteTheme.mainTextColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
+              Text(
+                'Today has no tasks',
+                style: TextStyle(
+                    fontFamily: 'RobotoMono',
+                    color: NoteTheme.mainTextColor,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
               ),
               Card(
                 elevation: 5,
@@ -115,41 +112,34 @@ class _EventPageState extends State<EventPage> {
           ),
           Stack(
             children: [
-              SingleChildScrollView(
-                child: Container(
-                  width: double.infinity,
-                  height: fullHeight / 1.45,
-                  // height: double.infinity,
+              Container(
+                width: double.infinity,
+                height: fullHeight / 1.45,
+                // height: double.infinity,
 
-                  decoration: BoxDecoration(
-                      color: NoteTheme.mainBgColor,
-                      // color: Colors.deepPurple,
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30))),
-                  child: SafeArea(
-                      child: Container(
-                    margin: const EdgeInsets.only(bottom: 20.0),
-                    child: ListView.builder(
-                        itemCount: notes!.length,
-                        itemBuilder: (context, index) {
-                          final note = notes![index];
+                decoration: BoxDecoration(
+                    color: NoteTheme.mainBgColor,
+                    // color: Colors.deepPurple,
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30))),
+                child: ListView.builder(
+                    itemCount: notes!.length,
+                    itemBuilder: (context, index) {
+                      final note = notes![index];
 
-                          return GestureDetector(
-                            onTap: () async {
-                              await Navigator.of(context)
-                                  .push(MaterialPageRoute(
-                                builder: (context) =>
-                                    NoteDetailPage(noteId: note.id!),
-                              ));
+                      return GestureDetector(
+                        onTap: () async {
+                          await Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>
+                                NoteDetailPage(noteId: note.id!),
+                          ));
 
-                              refreshNotes();
-                            },
-                            child: EvtItem(note: note, index: index),
-                          );
-                        }),
-                  )),
-                ),
+                          refreshNotes();
+                        },
+                        child: EvtItem(note: note, index: index),
+                      );
+                    }),
               ),
               Center(
                 child: InkWell(

@@ -306,9 +306,8 @@ class _WalHomePageState extends State<WalHomePage> {
       } else if (args.value is DateTime) {
         date_controller.text =
             DateFormat('dd/MM/yyyy').format(args.value).toString();
-        ;
       } else if (args.value is List<DateTime>) {
-      } else {}
+      } else {} 
     });
   }
 }

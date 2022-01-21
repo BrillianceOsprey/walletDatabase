@@ -1,6 +1,7 @@
 import 'package:assist_queen/components/note_form_widget.dart';
 import 'package:assist_queen/database_helper/database.dart';
 import 'package:assist_queen/model_class/note.dart';
+import 'package:assist_queen/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
 class AddEditNotePage extends StatefulWidget {
@@ -74,7 +75,9 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
         await addNote();
       }
 
-      Navigator.of(context).pop();
+      // Navigator.of(context).pop();
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
     }
   }
 
